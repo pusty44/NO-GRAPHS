@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4f0c4f4f-ec93-40b2-9cec-f22dc29f0fbc" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/class/sketch.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="470">
+              <caret line="432" column="39" selection-start-line="432" selection-start-column="39" selection-end-line="432" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>&amp;gt;</find>
+      <find>dVector</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>&gt;</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/class/Node.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/class/sketch.php" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="149" />
+    <option name="y" value="109" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="NO-GRAPHS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NO-GRAPHS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NO-GRAPHS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NO-GRAPHS" type="462c0819:PsiDirectoryNode" />
+              <item name="class" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f0c4f4f-ec93-40b2-9cec-f22dc29f0fbc" name="Default Changelist" comment="" />
+      <created>1546614032918</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1546614032918</updated>
+      <workItem from="1546614039057" duration="7283000" />
+      <workItem from="1546687324133" duration="2175000" />
+      <workItem from="1546695058099" duration="8033000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="17491000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2553305" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.32936078" />
+      <window_info anchor="bottom" id="Database Changes" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/class/Node.php" />
+    <entry file="file://$PROJECT_DIR$/class/sketch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="432" column="39" selection-start-line="432" selection-start-column="39" selection-end-line="432" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
