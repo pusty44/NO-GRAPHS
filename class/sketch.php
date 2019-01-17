@@ -78,6 +78,11 @@ class sketch
      */
     public $worstArr = array();
 
+    public $cVector = array();
+    public $kValue = 0;
+    public $pathListAdv = array();
+    public $rValue = 0;
+    public $processed = 0;
     /** ---------------------------------------------- */
 /** ---------------------------------------------- */
     /** ---------------------------------------------- */
@@ -88,19 +93,22 @@ class sketch
     public function __construct()
     {
         $this->matrix = [
-            [0.00, 0.08, 0.46, 0.20, 0.15, 0.11],
-            [0.00, 0.00, 0.29, 0.08, 0.41, 0.22],
-            [0.00, 0.00, 0.00, 0.83, 0.08, 0.09],
-            [0.00, 0.00, 0.00, 0.00, 0.71, 0.29],
-            [0.00, 0.00, 0.00, 0.00, 0.00, 1.00],
-            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            [0.00, 0.50, 0.50, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+            [0.00, 0.00, 0.00, 0.70, 0.00, 0.00, 0.20, 0.10, 0.00],
+            [0.00, 0.00, 0.00, 0.30, 0.70, 0.00, 0.00, 0.00, 0.00],
+            [0.00, 0.00, 0.00, 0.00, 0.20, 0.20, 0.50, 0.10, 0.00],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.50, 0.00, 0.50, 0.00],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.40, 0.60, 0.00],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.50, 0.50],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.20, 0.00, 0.80],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
         ];
         $this->nodesCount = sizeof($this->matrix);
         $this->pathCounter = 0;
-        $this->reliability = [0.34,0.87,0.46,0.15,0.64,0.93];
-        $this->alfaVector = [0.39,0.57,26,7,0.34,1];
-        $this->betaVector = [0.13,15,76,42,1,7];
-        $this->sVector = [21,7,13,8,44,7];
+        $this->reliability = [1,1,1,1,1,1,1,1,1];
+        $this->alfaVector = [50,35,25,30,40,35,20,30,60];
+        $this->betaVector = [5,2,8,10,4,3,9,12,5];
+        $this->sVector = [1000,400,1500,2500,900,300,1300,2400,800];
         $this->countVertexCost();
     }
 
@@ -213,13 +221,18 @@ class sketch
                     $this->dVector[$this->pathCounter] = 1;
                     if(sizeof($localPathList) > 1) echo $path.'->';
                     else echo $path;
+                    $this->pathListAdv[$this->pathCounter][] = $path;
                 } else if($it == sizeof($localPathList)-1) {
                     echo $path.' || <strong>D:</strong> '.round($this->dVector[$this->pathCounter]*100,2).'%';
                     $this->rList[$this->pathCounter] = $this->countR($this->dVector[$this->pathCounter]);
-                    echo ' || <strong>R:</strong> '.round($this->rList[$this->pathCounter],2);
-                    echo ' || <strong>Cost:</strong> '.$this->pathCost[$this->pathCounter];
+//                    echo ' || <strong>R:</strong> '.round($this->rList[$this->pathCounter],2);
+//                    echo ' || <strong>Cost:</strong> '.$this->pathCost[$this->pathCounter];
+                    $this->pathListAdv[$this->pathCounter][] = $path;
                 }
-                else echo $path.'->';
+                else {
+                    echo $path.'->';
+                    $this->pathListAdv[$this->pathCounter][] = $path;
+                }
                 $last = $path;
                 $it++;
             }
@@ -253,176 +266,65 @@ class sketch
         }
     }
 
-    /** ---------------------------------------------- */
-/** ---------------------------------------------- */
-    /** ---------------------------------------------- */
-
     /**
-     * Function to find minimum value in vector
-     *
-     * @param $vector
-     *
-     * @return mixed
+     * Function to calculate costs and reliability for path
      */
-    function findMin($vector){
-        $min = $vector[0];
-        foreach($vector as $cost){
-            if($cost < $min) $min = $cost;
+
+    function calculateCost(){
+        $cost = 0;
+        $this->cVector = array();
+        $this->kValue = 5000001;
+        $this->rValue = 1;
+        for($i=0;$i<$this->nodesCount;$i++){
+            $cost = $this->sVector[$i] + $this->alfaVector[$i] + pow(M_EULER,$this->betaVector[$i] * $this->reliability[$i]);
+            $this->cVector[] = $cost;
+            $this->kValue += $cost;
         }
-        return $min;
-    }
-
-    /**
-     * Function to find maximum value in vector
-     *
-     * @param $vector
-     *
-     * @return mixed
-     */
-    function findMax($vector){
-        $max = $vector[0];
-        foreach($vector as $r){
-            if($r > $max) $max = $r;
-        }
-        return $max;
-    }
-
-    /**
-     * Function to create two dimensional matrix with path cost in 0 column and path reliability in 1 column
-     * @return mixed
-     */
-    function createTopsisMatrix(){
-        for($i=0;$i<$this->pathCounter;$i++){
-            $matrix[$i][0] = $this->pathCost[$i];
-            $matrix[$i][1] = $this->rList[$i];
-        }
-        return $matrix;
-    }
-
-    /**
-     * Function to normalize matrix for topsis
-     *
-     * Two dimensional matrix
-     * @param $matrix
-     *
-     * @return mixed
-     */
-    function normalizeTopsisMatrix($matrix){
-        $squaredSum = 0.00;
-        $squaredSumArray = array();
-        for($i=0;$i<sizeof($matrix);$i++){
-            for($j=0;$j<sizeof($matrix[$i]);$j++){
-                $squaredSum += pow($matrix[$i][$j],2);
+        $tempR = 0;
+        for($i=0; $i<sizeof($this->pathListAdv);$i++){
+            $tempR = 1;
+            for($j=0;$j<sizeof($this->pathListAdv[$i]);$j++){
+                $tempR *= $this->reliability[$this->pathListAdv[$i][$j]];
             }
-            $squaredSumArray[$i] = sqrt($squaredSum);
+            $tempR *= $this->dVector[$i];
+            $this->rValue += $tempR;
         }
-        for($i=0;$i<sizeof($matrix);$i++){
-            for($j=0;$j<sizeof($matrix[$i]);$j++){
-                $matrix[$i][$j] = $matrix[$i][$j] / $squaredSumArray[$i];
-            }
-        }
-        return $matrix;
-    }
-
-    /**
-     * Function to create weighted values in topsis matrix
-     *
-     * Two dimensional matrix
-     * @param $matrix
-     *
-     * @return mixed
-     */
-    function weightedTopsisMatrix($matrix){
-        $matrix = $this->normalizeTopsisMatrix($matrix);
-        $weighted = array();
-        for($i=0;$i<sizeof($matrix);$i++) $weighted[$i] = 1/sizeof($matrix);
-        for($i=0;$i<sizeof($matrix);$i++){
-            for($j=0;$j<sizeof($matrix[$i]);$j++){
-                $matrix[$i][$j] *= $weighted[$i];
-            }
-        }
-        return $matrix;
-    }
-
-    /**
-     * Function to find best and worst path options
-     *
-     * Two dimensional matrix
-     * @param $matrix
-     * 1 Best option / 0 Worst option
-     * @param $directions
-     */
-    function idealTopsis($matrix,$directions){
-        $best = 0.00;
-        $worst = 0.00;
-        for($i=0;$i<sizeof($matrix);$i++){
-            if($directions){
-                $best = $this->findMax($matrix[$i]);
-                $worst = $this->findMin($matrix[$i]);
-            }
-            else {
-                $best = $this->findMin($matrix[$i]);
-                $worst = $this->findMax($matrix[$i]);
-            }
-            $this->bestArr[$i] = $best;
-            $this->worstArr[$i] = $worst;
+        for($i=0;$i<sizeof($this->reliability);$i++){
         }
     }
 
     /**
-     * Function to calculate distances in topsis matrix to find best path
-     *
-     * Two dimensional matrix
-     * @param $matrix
-     * 1 PLUS / 0 MINUS
-     * @param $direction
-     *
-     * @return array
+     * Recursive function to find best solution
+     * @param $cursor
+     * @param $iterator
      */
-    function calculateDistance($matrix,$direction){
-        $sum = 0.00;
-        $sums = array();
-        for($i=0;$i<sizeof($matrix[0]);$i++){
-            for($j=0;$j<sizeof($matrix);$j++){
-                if($direction) $sum += pow($matrix[$j][$i]- $this->bestArr[$j],2);
-                else $sum += pow($matrix[$j][$i]- $this->worstArr[$j],2);
+    function checkVariables($cursor,$iterator){
+        $this->processed++;
+            if($this->kValue <= 5000000 && $this->rValue >= 0.99){
+                return ;
+            } else {
+                if($cursor<$this->nodesCount){
+                        if($this->reliability[$cursor]>=0){
+                            if($iterator==0) $this->reliability[$cursor] -= 0.001;
+                            elseif($iterator==1) $this->reliability[$cursor] -=0.01;
+                            elseif($iterator==2) $this->reliability[$cursor] -=0.1;
+                        }
+                        else {
+                            $cursor++;
+                            $this->reliability = [1,1,1,1,1,1,1,1,1];
+                        }
+                        $this->calculateCost();
+                        $this->checkVariables($cursor,$iterator);
+
+                } else {
+                    if($cursor == $this->nodesCount && $iterator==3) {
+                        return;
+                    }
+                    $cursor = 0;
+                    $iterator++;
+                }
+
             }
-            array_push($sums,sqrt($sum));
-            $sum = 0.00;
-        }
-        return $sums;
-    }
-
-    /**
-     * Function to find best path in graph based on distances
-     *
-     * Best options
-     * @param $plus
-     * Worst options
-     * @param $minus
-     *
-     * @return array
-     */
-    function performanceScore($plus,$minus){
-        $perf = array();
-        for($i=0;$i<sizeof($plus);$i++){
-            array_push($perf,$plus[$i]/($plus[$i] + $minus[$i]));
-        }
-        return $perf;
-    }
-
-    /**
-     * Function to print best path option
-     *
-     * array with performance scores
-     * @param $perf
-     */
-    function printResult($perf){
-        $choosen = 0;
-        for($i=0;$i<sizeof($perf);$i++){
-            if($choosen < $perf[$i]) $choosen = $perf[$i];
-        }
-        echo 'Ścieżka nr: <strong>'.$choosen.'</strong> jest najlepsza.';
     }
 
     /** ---------------------------------------------- */
@@ -433,17 +335,17 @@ class sketch
      * Function to initialise algorithm
      */
     function init(){
+        $this->printMatrix($this->matrix);
+        echo '<br /><br />';
         $this->initAdjList();
         $this->findAllEdges();
         $this->printAllPaths(0,$this->nodesCount-1);
+        echo '<br /><br />';
         echo '<strong>LICZBA DRÓG: '.$this->pathCounter.'</strong>';
-        echo '<br />';
-        $matrix = $this->createTopsisMatrix();
-        $matrix = $this->weightedTopsisMatrix($matrix);
-        $this->idealTopsis($matrix,true);
-        $plus = $this->calculateDistance($matrix,1);
-        $minus = $this->calculateDistance($matrix,0);
-        $perf = $this->performanceScore($plus,$minus);
-        $this->printResult($perf);
+        echo '<br /><br />';
+        $this->checkVariables(0,0);
+        echo 'Koszt całkowity: '.$this->kValue.'<br />';
+        echo 'Niez. całkowita: '.$this->rValue.'<br />';
+        echo 'Sprawdzonych wariantów: '.$this->processed.'<br />';
     }
 }

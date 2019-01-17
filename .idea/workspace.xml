@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/class/sketch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="432" column="39" selection-start-line="432" selection-start-column="39" selection-end-line="432" selection-end-column="39" />
+            <state relative-caret-position="350">
+              <caret line="108" column="29" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -51,11 +51,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="149" />
-    <option name="y" value="109" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1688" />
+    <option name="y" value="35" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -87,6 +87,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -113,19 +114,24 @@
       <workItem from="1546614039057" duration="7283000" />
       <workItem from="1546687324133" duration="2175000" />
       <workItem from="1546695058099" duration="8033000" />
+      <workItem from="1546703121770" duration="75000" />
+      <workItem from="1546703216582" duration="43000" />
+      <workItem from="1546704508013" duration="5000" />
+      <workItem from="1547134335952" duration="725000" />
+      <workItem from="1547752441678" duration="7074000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17491000" />
+    <option name="totallyTimeSpent" value="25413000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1688" y="35" width="1696" height="1026" extended-state="6" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2553305" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.30806845" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="0" visible="true" weight="0.32922733" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
@@ -150,8 +156,8 @@
     <entry file="file://$PROJECT_DIR$/class/Node.php" />
     <entry file="file://$PROJECT_DIR$/class/sketch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="432" column="39" selection-start-line="432" selection-start-column="39" selection-end-line="432" selection-end-column="39" />
+        <state relative-caret-position="350">
+          <caret line="108" column="29" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="31" />
         </state>
       </provider>
     </entry>
